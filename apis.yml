@@ -9,10 +9,10 @@ type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
   - Email
-  - Transactional Email
+  - Email Delivery
   - Marketing Email
   - SMTP
-  - Email Delivery
+  - Transactional Email
 url: >-
   https://raw.githubusercontent.com/api-evangelist/maileroo/refs/heads/main/apis.yml
 created: '2025-02-06'
@@ -29,8 +29,8 @@ apis:
     baseURL: https://smtp.maileroo.com
     tags:
       - Email
-      - Transactional Email
       - REST API
+      - Transactional Email
     properties:
       - type: Documentation
         url: https://maileroo.com/docs/email-api/introduction/
