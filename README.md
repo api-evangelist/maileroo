@@ -16,7 +16,7 @@ Maileroo provides transactional and marketing email delivery via a developer-fri
 ## Timestamps
 
 - **Created:** 2025-02-06 
-- **Modified:** 2026-03-16 
+- **Modified:** 2026-04-28 
 
 ## APIs
 
@@ -36,6 +36,7 @@ The Maileroo REST API allows sending transactional and marketing emails via JSON
 - [Getting Started](https://maileroo.com/docs/introduction/)
 - [Reference](https://maileroo.com/docs/email-api/send-basic-email/)
 - [SDKs](https://maileroo.com/docs/email-api/libraries-and-sdks/)
+- [OpenAPI](openapi/maileroo-email-api-openapi.yml)
 
 ## Common Properties
 

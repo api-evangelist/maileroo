@@ -16,7 +16,7 @@ tags:
 url: >-
   https://raw.githubusercontent.com/api-evangelist/maileroo/refs/heads/main/apis.yml
 created: '2025-02-06'
-modified: '2026-03-16'
+modified: '2026-04-28'
 specificationVersion: '0.19'
 apis:
   - aid: maileroo:maileroo-email-api
@@ -40,6 +40,8 @@ apis:
         url: https://maileroo.com/docs/email-api/send-basic-email/
       - type: SDKs
         url: https://maileroo.com/docs/email-api/libraries-and-sdks/
+      - type: OpenAPI
+        url: openapi/maileroo-email-api-openapi.yml
 common:
   - type: Portal
     url: https://maileroo.com/email-for-developers
