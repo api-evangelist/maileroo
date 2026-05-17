@@ -34,7 +34,7 @@ apis:
     properties:
       - type: Documentation
         url: https://maileroo.com/docs/email-api/introduction/
-      - type: Getting Started
+      - type: GettingStarted
         url: https://maileroo.com/docs/introduction/
       - type: Reference
         url: https://maileroo.com/docs/email-api/send-basic-email/
@@ -47,11 +47,11 @@ common:
     url: https://maileroo.com/email-for-developers
   - type: Documentation
     url: https://maileroo.com/docs/
-  - type: Sign Up
+  - type: SignUp
     url: https://app.maileroo.com/register
   - type: Login
     url: https://app.maileroo.com/login
-  - type: GitHub Organization
+  - type: GitHubOrganization
     url: https://github.com/maileroo
   - type: Pricing
     url: https://maileroo.com/pricing
