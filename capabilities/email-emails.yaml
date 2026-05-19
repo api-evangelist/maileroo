@@ -1,0 +1,164 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: Maileroo Email API — Emails
+  description: 'Maileroo Email API — Emails. 3 operations. Lead operation: Send a basic email. Self-contained Naftiko capability
+    covering one Maileroo business surface.'
+  tags:
+  - Maileroo
+  - Emails
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    MAILEROO_API_KEY: MAILEROO_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: email-emails
+    baseUri: https://smtp.maileroo.com/api/v2
+    description: Maileroo Email API — Emails business capability. Self-contained, no shared references.
+    resources:
+    - name: emails
+      path: /emails
+      operations:
+      - name: sendbasicemail
+        method: POST
+        description: Send a basic email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: emails-bulk
+      path: /emails/bulk
+      operations:
+      - name: sendbulkemails
+        method: POST
+        description: Send bulk emails
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    - name: emails-template
+      path: /emails/template
+      operations:
+      - name: sendtemplatedemail
+        method: POST
+        description: Send a templated email
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.MAILEROO_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: email-emails-rest
+    port: 8080
+    description: REST adapter for Maileroo Email API — Emails. One Spectral-compliant resource per consumed operation, prefixed
+      with /v1.
+    resources:
+    - path: /v1/emails
+      name: emails
+      description: REST surface for emails.
+      operations:
+      - method: POST
+        name: sendbasicemail
+        description: Send a basic email
+        call: email-emails.sendbasicemail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/emails/bulk
+      name: emails-bulk
+      description: REST surface for emails-bulk.
+      operations:
+      - method: POST
+        name: sendbulkemails
+        description: Send bulk emails
+        call: email-emails.sendbulkemails
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/emails/template
+      name: emails-template
+      description: REST surface for emails-template.
+      operations:
+      - method: POST
+        name: sendtemplatedemail
+        description: Send a templated email
+        call: email-emails.sendtemplatedemail
+        with:
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: email-emails-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for Maileroo Email API — Emails. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: send-basic-email
+      description: Send a basic email
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: email-emails.sendbasicemail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-bulk-emails
+      description: Send bulk emails
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: email-emails.sendbulkemails
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: send-templated-email
+      description: Send a templated email
+      hints:
+        readOnly: false
+        destructive: false
+        idempotent: false
+      call: email-emails.sendtemplatedemail
+      with:
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
