@@ -1,0 +1,127 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Maileroo Email API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a basic email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://smtp.maileroo.com/api/v2/emails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a transactional email with HTML and/or plain text content. Supports attachments, tracking, custom tags and headers, and scheduled delivery via RFC 3339 timestamps or natural language."
+        },
+        {
+          "info": {
+            "name": "Send a templated email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://smtp.maileroo.com/api/v2/emails/template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email using a template defined in the Maileroo dashboard. Template variables are merged via the template_data object."
+        },
+        {
+          "info": {
+            "name": "Send bulk emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://smtp.maileroo.com/api/v2/emails/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send up to 500 emails in a single request, each with its own recipient and merge variables. Common subject and body content applies across messages, with per-message overrides."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Scheduled",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List scheduled emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://smtp.maileroo.com/api/v2/emails/scheduled",
+            "params": [
+              {
+                "name": "domain",
+                "value": "",
+                "type": "query",
+                "description": "Sender domain (required for app-scoped API keys)"
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query"
+              },
+              {
+                "name": "per_page",
+                "value": "",
+                "type": "query"
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of emails scheduled for future delivery. Filterable by sending domain when using app-scoped API keys."
+        },
+        {
+          "info": {
+            "name": "Delete a scheduled email",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://smtp.maileroo.com/api/v2/emails/scheduled/:reference_id",
+            "params": [
+              {
+                "name": "reference_id",
+                "value": "",
+                "type": "path",
+                "description": "The 24-character hex reference ID of the scheduled email"
+              }
+            ]
+          },
+          "docs": "Cancel a scheduled email by its reference ID. This action is irreversible."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
