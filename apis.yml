@@ -46,7 +46,7 @@ common:
     url: https://maileroo.com/email-for-developers
   - type: Documentation
     url: https://maileroo.com/docs/
-  - type: SignUp
+  - type: Signup
     url: https://app.maileroo.com/register
   - type: Login
     url: https://app.maileroo.com/login
@@ -54,7 +54,7 @@ common:
     url: https://github.com/maileroo
   - type: Pricing
     url: https://maileroo.com/pricing
-  - type: LLMsTxt
+  - type: LlmsText
     url: https://maileroo.com/llms.txt
 maintainers:
   - FN: Kin Lane
