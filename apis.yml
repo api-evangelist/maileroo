@@ -40,6 +40,10 @@ apis:
       - type: OpenAPI
         url: openapi/maileroo-email-api-openapi.yml
 common:
+  - type: DomainSecurity
+    url: security/maileroo-domain-security.yml
+  - type: Authentication
+    url: authentication/maileroo-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/maileroo
   - type: Portal
@@ -56,6 +60,8 @@ common:
     url: https://maileroo.com/pricing
   - type: LlmsText
     url: https://maileroo.com/llms.txt
+  - type: Blog
+    url: https://maileroo.com/blog/feed
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
