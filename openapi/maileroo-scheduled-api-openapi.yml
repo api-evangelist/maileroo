@@ -1,0 +1,150 @@
+openapi: 3.1.0
+info:
+  title: Maileroo Email Emails Scheduled API
+  description: The Maileroo REST API allows sending transactional and marketing emails via JSON requests with high deliverability. Supports HTML and plain text emails, attachments, tracking, templates, scheduled delivery, and bulk sending. All requests are authenticated via an API sending key passed in the X-Api-Key header or as a Bearer token in the Authorization header.
+  version: '2.0'
+  contact:
+    name: Maileroo Support
+    url: https://maileroo.com/docs/
+  termsOfService: https://maileroo.com/terms
+servers:
+- url: https://smtp.maileroo.com/api/v2
+  description: Production
+security:
+- ApiKeyAuth: []
+- BearerAuth: []
+tags:
+- name: Scheduled
+  description: Manage scheduled email deliveries
+paths:
+  /emails/scheduled:
+    get:
+      operationId: listScheduledEmails
+      summary: List scheduled emails
+      description: Retrieve a paginated list of emails scheduled for future delivery. Filterable by sending domain when using app-scoped API keys.
+      tags:
+      - Scheduled
+      parameters:
+      - name: domain
+        in: query
+        required: false
+        description: Sender domain (required for app-scoped API keys)
+        schema:
+          type: string
+      - name: page
+        in: query
+        schema:
+          type: integer
+          default: 1
+      - name: per_page
+        in: query
+        schema:
+          type: integer
+          default: 10
+          maximum: 100
+      responses:
+        '200':
+          description: Paginated list of scheduled emails
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledEmailList'
+        '401':
+          description: Authentication failed
+  /emails/scheduled/{reference_id}:
+    delete:
+      operationId: deleteScheduledEmail
+      summary: Delete a scheduled email
+      description: Cancel a scheduled email by its reference ID. This action is irreversible.
+      tags:
+      - Scheduled
+      parameters:
+      - name: reference_id
+        in: path
+        required: true
+        description: The 24-character hex reference ID of the scheduled email
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Scheduled email cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleResponse'
+        '404':
+          description: Scheduled email not found
+components:
+  schemas:
+    SimpleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true
+    ScheduledEmailList:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            page:
+              type: integer
+            per_page:
+              type: integer
+            total_count:
+              type: integer
+            total_pages:
+              type: integer
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/ScheduledEmailRecord'
+    ScheduledEmailRecord:
+      type: object
+      properties:
+        reference_id:
+          type: string
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        subject:
+          type: string
+        scheduled_at:
+          type: string
+          format: date-time
+        tags:
+          type: object
+        headers:
+          type: object
+    EmailObject:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          type: string
+          format: email
+        display_name:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    BearerAuth:
+      type: http
+      scheme: bearer
+externalDocs:
+  description: Maileroo Email API Documentation
+  url: https://maileroo.com/docs/email-api/introduction/
