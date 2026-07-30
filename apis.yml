@@ -5,7 +5,20 @@ description: >-
   deliverability, SMTP relay support, email tracking, and SDKs for popular programming languages. Trusted by businesses
   of all sizes to handle millions of emails every month.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/maileroo.png
 tags:
   - Email
   - Email Delivery
@@ -17,28 +30,42 @@ created: '2025-02-06'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: maileroo:maileroo-email-api
-    name: Maileroo Email API
-    description: >-
-      The Maileroo REST API allows sending transactional and marketing emails via JSON requests with high
-      deliverability. Supports HTML and plain text emails, attachments, tracking, and templates.
-    humanURL: https://maileroo.com/email-for-developers
-    baseURL: https://smtp.maileroo.com
-    tags:
-      - Email
-      - REST API
-      - Transactional Email
-    properties:
-      - type: Documentation
-        url: https://maileroo.com/docs/email-api/introduction/
-      - type: GettingStarted
-        url: https://maileroo.com/docs/introduction/
-      - type: Reference
-        url: https://maileroo.com/docs/email-api/send-basic-email/
-      - type: SDKs
-        url: https://maileroo.com/docs/email-api/libraries-and-sdks/
-      - type: OpenAPI
-        url: openapi/maileroo-email-api-openapi.yml
+- aid: maileroo:maileroo-emails-api
+  name: Maileroo Emails API
+  description: Send transactional and bulk emails
+  humanURL: https://maileroo.com/email-for-developers
+  baseURL: https://smtp.maileroo.com
+  tags:
+  - Emails
+  properties:
+  - type: OpenAPI
+    url: openapi/maileroo-emails-api-openapi.yml
+  - type: Documentation
+    url: https://maileroo.com/docs/email-api/introduction/
+  - type: GettingStarted
+    url: https://maileroo.com/docs/introduction/
+  - type: Reference
+    url: https://maileroo.com/docs/email-api/send-basic-email/
+  - type: SDKs
+    url: https://maileroo.com/docs/email-api/libraries-and-sdks/
+- aid: maileroo:maileroo-scheduled-api
+  name: Maileroo Scheduled API
+  description: Manage scheduled email deliveries
+  humanURL: https://maileroo.com/email-for-developers
+  baseURL: https://smtp.maileroo.com
+  tags:
+  - Scheduled
+  properties:
+  - type: OpenAPI
+    url: openapi/maileroo-scheduled-api-openapi.yml
+  - type: Documentation
+    url: https://maileroo.com/docs/email-api/introduction/
+  - type: GettingStarted
+    url: https://maileroo.com/docs/introduction/
+  - type: Reference
+    url: https://maileroo.com/docs/email-api/send-basic-email/
+  - type: SDKs
+    url: https://maileroo.com/docs/email-api/libraries-and-sdks/
 common:
   - type: AgenticAccess
     url: agentic-access/maileroo-agentic-access.yml
