@@ -1,0 +1,400 @@
+openapi: 3.1.0
+info:
+  title: Maileroo Email API
+  description: >-
+    The Maileroo REST API allows sending transactional and marketing emails
+    via JSON requests with high deliverability. Supports HTML and plain text
+    emails, attachments, tracking, templates, scheduled delivery, and bulk
+    sending. All requests are authenticated via an API sending key passed in
+    the X-Api-Key header or as a Bearer token in the Authorization header.
+  version: '2.0'
+  contact:
+    name: Maileroo Support
+    url: https://maileroo.com/docs/
+  termsOfService: https://maileroo.com/terms
+externalDocs:
+  description: Maileroo Email API Documentation
+  url: https://maileroo.com/docs/email-api/introduction/
+servers:
+  - url: https://smtp.maileroo.com/api/v2
+    description: Production
+security:
+  - ApiKeyAuth: []
+  - BearerAuth: []
+tags:
+  - name: Emails
+    description: Send transactional and bulk emails
+  - name: Scheduled
+    description: Manage scheduled email deliveries
+paths:
+  /emails:
+    post:
+      operationId: sendBasicEmail
+      summary: Send a basic email
+      description: >-
+        Send a transactional email with HTML and/or plain text content.
+        Supports attachments, tracking, custom tags and headers, and
+        scheduled delivery via RFC 3339 timestamps or natural language.
+      tags:
+        - Emails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BasicEmailRequest'
+      responses:
+        '200':
+          description: Email accepted for delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendResponse'
+        '400':
+          description: Validation error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '401':
+          description: Authentication failed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+  /emails/template:
+    post:
+      operationId: sendTemplatedEmail
+      summary: Send a templated email
+      description: >-
+        Send an email using a template defined in the Maileroo dashboard.
+        Template variables are merged via the template_data object.
+      tags:
+        - Emails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/TemplatedEmailRequest'
+      responses:
+        '200':
+          description: Email accepted for delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendResponse'
+        '400':
+          description: Validation error
+        '401':
+          description: Authentication failed
+  /emails/bulk:
+    post:
+      operationId: sendBulkEmails
+      summary: Send bulk emails
+      description: >-
+        Send up to 500 emails in a single request, each with its own
+        recipient and merge variables. Common subject and body content
+        applies across messages, with per-message overrides.
+      tags:
+        - Emails
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BulkEmailRequest'
+      responses:
+        '200':
+          description: Emails accepted for delivery
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BulkSendResponse'
+        '400':
+          description: Validation error
+        '401':
+          description: Authentication failed
+  /emails/scheduled:
+    get:
+      operationId: listScheduledEmails
+      summary: List scheduled emails
+      description: >-
+        Retrieve a paginated list of emails scheduled for future delivery.
+        Filterable by sending domain when using app-scoped API keys.
+      tags:
+        - Scheduled
+      parameters:
+        - name: domain
+          in: query
+          required: false
+          description: Sender domain (required for app-scoped API keys)
+          schema:
+            type: string
+        - name: page
+          in: query
+          schema:
+            type: integer
+            default: 1
+        - name: per_page
+          in: query
+          schema:
+            type: integer
+            default: 10
+            maximum: 100
+      responses:
+        '200':
+          description: Paginated list of scheduled emails
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ScheduledEmailList'
+        '401':
+          description: Authentication failed
+  /emails/scheduled/{reference_id}:
+    delete:
+      operationId: deleteScheduledEmail
+      summary: Delete a scheduled email
+      description: >-
+        Cancel a scheduled email by its reference ID. This action is
+        irreversible.
+      tags:
+        - Scheduled
+      parameters:
+        - name: reference_id
+          in: path
+          required: true
+          description: The 24-character hex reference ID of the scheduled email
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Scheduled email cancelled
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SimpleResponse'
+        '404':
+          description: Scheduled email not found
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-Api-Key
+    BearerAuth:
+      type: http
+      scheme: bearer
+  schemas:
+    EmailObject:
+      type: object
+      required: [address]
+      properties:
+        address:
+          type: string
+          format: email
+        display_name:
+          type: string
+    Attachment:
+      type: object
+      required: [file_name, content]
+      properties:
+        file_name:
+          type: string
+        content:
+          type: string
+          description: Base64-encoded file content
+        content_type:
+          type: string
+        inline:
+          type: boolean
+        content_id:
+          type: string
+    BasicEmailRequest:
+      type: object
+      required: [from, to, subject]
+      properties:
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          oneOf:
+            - $ref: '#/components/schemas/EmailObject'
+            - type: array
+              items:
+                $ref: '#/components/schemas/EmailObject'
+        cc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        bcc:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        reply_to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        subject:
+          type: string
+          maxLength: 255
+        html:
+          type: string
+        plain:
+          type: string
+        tracking:
+          type: boolean
+        tags:
+          type: object
+          additionalProperties:
+            type: string
+        headers:
+          type: object
+          additionalProperties:
+            type: string
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+        scheduled_at:
+          type: string
+          description: RFC 3339 timestamp or natural language schedule
+        reference_id:
+          type: string
+          description: 24-character hex ID; auto-generated if omitted
+    TemplatedEmailRequest:
+      allOf:
+        - $ref: '#/components/schemas/BasicEmailRequest'
+        - type: object
+          required: [template_id]
+          properties:
+            template_id:
+              type: integer
+            template_data:
+              type: object
+              additionalProperties: true
+    BulkMessage:
+      type: object
+      required: [from, to]
+      properties:
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          $ref: '#/components/schemas/EmailObject'
+        template_data:
+          type: object
+        reference_id:
+          type: string
+    BulkEmailRequest:
+      type: object
+      required: [subject, messages]
+      properties:
+        subject:
+          type: string
+          maxLength: 255
+        messages:
+          type: array
+          maxItems: 500
+          items:
+            $ref: '#/components/schemas/BulkMessage'
+        template_id:
+          type: integer
+        html:
+          type: string
+        plain:
+          type: string
+        tracking:
+          type: boolean
+        tags:
+          type: object
+        headers:
+          type: object
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
+    SendResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            reference_id:
+              type: string
+    BulkSendResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            reference_ids:
+              type: array
+              items:
+                type: string
+    SimpleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true
+    ScheduledEmailRecord:
+      type: object
+      properties:
+        reference_id:
+          type: string
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        subject:
+          type: string
+        scheduled_at:
+          type: string
+          format: date-time
+        tags:
+          type: object
+        headers:
+          type: object
+    ScheduledEmailList:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            page:
+              type: integer
+            per_page:
+              type: integer
+            total_count:
+              type: integer
+            total_pages:
+              type: integer
+            results:
+              type: array
+              items:
+                $ref: '#/components/schemas/ScheduledEmailRecord'
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true

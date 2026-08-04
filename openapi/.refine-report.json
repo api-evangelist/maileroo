@@ -1,0 +1,16 @@
+{
+  "provider": "maileroo",
+  "sources": [
+    "maileroo-emails-api-openapi.yml",
+    "maileroo-scheduled-api-openapi.yml"
+  ],
+  "outputs": [
+    "maileroo-emails-api-openapi.yml",
+    "maileroo-scheduled-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
