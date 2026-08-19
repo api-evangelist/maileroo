@@ -1,0 +1,359 @@
+{
+  "item": [
+    {
+      "id": "ba654c39-4490-4880-8d8c-8f89a0568cff",
+      "name": "Scheduled",
+      "description": {
+        "content": "Manage scheduled email deliveries",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "f1a1b3f4-4df1-4cc7-a47c-4f6ff2e79434",
+          "name": "List scheduled emails",
+          "request": {
+            "name": "List scheduled emails",
+            "description": {
+              "content": "Retrieve a paginated list of emails scheduled for future delivery. Filterable by sending domain when using app-scoped API keys.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emails",
+                "scheduled"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "domain",
+                  "value": "<string>",
+                  "description": "Sender domain (required for app-scoped API keys)"
+                },
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1"
+                },
+                {
+                  "disabled": false,
+                  "key": "per_page",
+                  "value": "10"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "cc27855d-d3d2-41fa-abd3-67653e607853",
+              "name": "Paginated list of scheduled emails",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": true,\n  \"message\": \"string\",\n  \"data\": {\n    \"page\": 3448,\n    \"per_page\": 509,\n    \"total_count\": 7563,\n    \"total_pages\": 6731,\n    \"results\": [\n      {\n        \"reference_id\": \"string\",\n        \"from\": {\n          \"address\": \"mhHpn@HvkKQXrLOEGkoHWpGDwNwmkAvu.bjv\",\n          \"display_name\": \"string\"\n        },\n        \"to\": [\n          {\n            \"address\": \"pnzOHGCOH@Gzger.yfm\",\n            \"display_name\": \"string\"\n          },\n          {\n            \"address\": \"MOj4B3ILHXD0@lDODROuBGBzyhelfeIQswtCZZh.dd\",\n            \"display_name\": \"string\"\n          }\n        ],\n        \"subject\": \"string\",\n        \"scheduled_at\": \"2008-10-11T22:08:22.325Z\",\n        \"tags\": {},\n        \"headers\": {}\n      },\n      {\n        \"reference_id\": \"string\",\n        \"from\": {\n          \"address\": \"QadQrE5b@St.yd\",\n          \"display_name\": \"string\"\n        },\n        \"to\": [\n          {\n            \"address\": \"oD64qciAtjS@TrpTPvkzcRIrrSBVQVHLgHlcVSfzGro.isre\",\n            \"display_name\": \"string\"\n          },\n          {\n            \"address\": \"RNr4eqHQKXGt@jnbLbXLzeKQgCrrDSBh.vxdq\",\n            \"display_name\": \"string\"\n          }\n        ],\n        \"subject\": \"string\",\n        \"scheduled_at\": \"1987-04-27T11:20:13.124Z\",\n        \"tags\": {},\n        \"headers\": {}\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7d94762-958a-4555-b43d-d5e8dc62ad08",
+              "name": "Authentication failed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "scheduled"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "domain",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "per_page",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "23f56f43-0406-4293-a82d-b2218de23a2a",
+          "name": "Delete a scheduled email",
+          "request": {
+            "name": "Delete a scheduled email",
+            "description": {
+              "content": "Cancel a scheduled email by its reference ID. This action is irreversible.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "emails",
+                "scheduled",
+                ":reference_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reference_id",
+                  "description": "(Required) The 24-character hex reference ID of the scheduled email"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "626ac9d7-6831-4aef-8e0b-4f6bf9431352",
+              "name": "Scheduled email cancelled",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "scheduled",
+                    ":reference_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference_id",
+                      "description": "(Required) The 24-character hex reference ID of the scheduled email"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"success\": false,\n  \"message\": \"string\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c5eb33fd-24c9-4f59-a915-9f185661a857",
+              "name": "Scheduled email not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "emails",
+                    "scheduled",
+                    ":reference_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reference_id",
+                      "description": "(Required) The 24-character hex reference ID of the scheduled email"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-Api-Key",
+                    "value": "<API Key>"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "text/plain"
+                }
+              ],
+              "body": "",
+              "cookie": [],
+              "_postman_previewlanguage": "text"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://smtp.maileroo.com/api/v2",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "2a27f92c-26cc-4b8f-afc6-c1de9f70c003",
+    "name": "Maileroo Email Emails Scheduled API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Maileroo REST API allows sending transactional and marketing emails via JSON requests with high deliverability. Supports HTML and plain text emails, attachments, tracking, templates, scheduled delivery, and bulk sending. All requests are authenticated via an API sending key passed in the X-Api-Key header or as a Bearer token in the Authorization header.\n\nContact Support:\n Name: Maileroo Support",
+      "type": "text/plain"
+    }
+  }
+}

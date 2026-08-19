@@ -1,0 +1,148 @@
+# Maileroo
+
+Maileroo is an all-in-one email delivery platform that provides SMTP relay, REST API, email marketing, email verification, and inbound email routing.
+
+## Overview
+
+Maileroo enables developers and businesses to send transactional and marketing emails with high deliverability, real-time tracking, and scalable infrastructure. ([Maileroo][1])
+
+Core capabilities:
+
+* SMTP relay for transactional email delivery
+* REST Email API for programmatic sending
+* Email marketing platform (campaigns, segmentation, templates)
+* Email verification to reduce bounce rates
+* Inbound email routing
+* Real-time analytics (opens, clicks, bounces, events)
+
+## Key Features
+
+### Easy Integration
+
+* SMTP Relay
+* RESTful API
+* Sandbox domain access
+* WordPress Plugin (Simple SMTP by Maileroo)
+* Email Verification API
+* Webhooks
+* Developer Docs
+* SDKs for PHP, Laravel, Node.js, Python, .NET, Go, Java
+
+### Deliverability
+
+* DKIM authentication
+* SPF records
+* DMARC support
+* Free Dedicated IP Address (included on 250K+ plans)
+* Automatic IP Warmup
+* Mail Tester (Score Checker)
+* Blacklist Monitoring
+
+### Analytics & Reporting
+
+* Click & Open Tracking
+* Email Lifecycle Tracking
+* Custom Tracking Domains
+* Real-time Analytics
+* Detailed Reporting
+* Full Message Retention (14 days)
+* Logging & Events
+
+### Email Delivery
+
+* Outbound SMTP Relay
+* Inbound Routing
+* Template Engine (Handlebars variables and dynamic content)
+* Bounce Handling
+* Complaint Handling
+* Suppression List
+
+### Security & Support
+
+* Two-Factor Authentication (2FA)
+* Encrypted Transit
+* Help Center
+* Email Support
+* Live Chat Support
+* GDPR Compliance
+
+### Email Marketing (powered by CampaignLark)
+
+* Bulk and Scheduled Campaigns
+* A/B Testing
+* Lark Drag-and-Drop Email Editor
+* Template Gallery (full access on all plans)
+* Custom HTML Editor (BYO HTML)
+* Image Library & CDN
+* Automations with Flow Builder (multi-step journeys, behavioral triggers, conditional logic)
+* Lists, Tags, and Dynamic Segments
+* Custom Fields and Contact Deduplication
+* Embeddable and Pop-up Forms
+* Unsubscribe Management
+* Campaign, Automation, Open Rate, Click Rate, Bounce Rate, and Geographic Analytics
+* Roles & Permissions, Workspaces, and Workspace Switching
+* Passkeys and 2FA
+
+## Pricing
+
+All plans include every feature listed above. Pricing scales with email volume. No credit card required to start. ([Maileroo Pricing][4])
+
+### Email API / SMTP Relay Plans (USD/month)
+
+* **Free** - 3,000 outbound emails + 1,000 inbound emails - $0/month ($0.00 per 1,000 emails)
+* **25K** - 25,000 outbound + 25,000 inbound - $10/month ($0.40 per 1,000)
+* **50K** - 50,000 outbound + 50,000 inbound - $15/month ($0.30 per 1,000)
+* **100K** - 100,000 outbound + 100,000 inbound - $30/month ($0.30 per 1,000)
+* **250K** - 250,000 outbound + 250,000 inbound - $72/month ($0.29 per 1,000) - includes free Dedicated IP
+* **500K** - 500,000 outbound + 500,000 inbound - $140/month ($0.28 per 1,000) - includes free Dedicated IP
+* **1M** - 1,000,000 outbound + 1,000,000 inbound - $250/month ($0.25 per 1,000) - includes free Dedicated IP
+* **1M+** - Custom pricing, contact sales
+
+### Email Marketing Plans (CampaignLark, USD/month)
+
+* **Free** - 1,000 emails/month, 5,000 contacts, 2 domains, 1 user, 3 segments, 2 automations, 5,000 events - $0/month
+* **Starter** - 5,000 emails/month, unlimited contacts (fair use), 3 domains, 3 users, 25 segments, 15 automations, 25,000 events - $15/month
+* **Basic** - 10,000 emails/month, unlimited contacts, 3 domains, 5 users, 50 segments, 25 automations, 50,000 events - $30/month
+* **Growth** - 25,000 emails/month, 5 domains, 5 users, 100 segments, 50 automations, 125,000 events - $50/month
+* **Pro** - 50,000 emails/month, 5 domains, 5 users, 150 segments, 75 automations, 250,000 events - $65/month
+* **Business** - 100,000 emails/month, 10 domains, 10 users, 250 segments, 100 automations, 500,000 events - $90/month
+* **Business Plus** - 250,000 emails/month, 25 domains, 10 users, 350 segments, 125 automations - $160/month
+* **Scale** - 500,000 emails/month, 25 domains, 10 users, 500 segments, 150 automations - $300/month
+* **Scale Plus** - 1,000,000 emails/month, 50 domains, 25 users - $600/month
+* **Enterprise** - 2,000,000 emails/month, 50 domains, 50 users - $900/month
+* **Enterprise Plus** - 3,000,000 emails/month, 100 domains, 100 users - $1,300/month
+
+https://maileroo.com/pricing
+
+## Use Cases
+
+* Transactional emails (password resets, receipts, alerts)
+* Marketing campaigns and newsletters
+* SaaS email infrastructure
+* Email verification and list cleaning
+* Inbound email processing
+
+## Integrations
+
+* Works with any system via SMTP
+* REST API for custom integrations
+* Compatible with common platforms (e.g. WordPress, Magento) ([Maileroo][3])
+
+## Support
+
+Help docs: https://maileroo.com/docs/
+Contact: https://maileroo.com/contact
+
+## Company
+
+Maileroo Group Pty Ltd
+Level 10, 440 Collins Street
+Melbourne VIC 3000
+Australia ([Maileroo][1])
+
+Maileroo is an email infrastructure platform focused on high deliverability, developer-friendly APIs, and scalable email sending for businesses of all sizes.
+
+[1]: https://maileroo.com/ "Maileroo: SMTP Relay, Email API and Email Marketing Software"
+[2]: https://maileroo.com/free-email-api "Free Email API for Developers & Startups"
+[3]: https://maileroo.com/smtp-email-service "SMTP Email Service"
+[4]: https://maileroo.com/pricing "Maileroo Pricing"

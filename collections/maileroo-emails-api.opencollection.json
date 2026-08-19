@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Maileroo Email Emails API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-Api-Key",
+      "value": "{{X-Api-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Emails",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Send a basic email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://smtp.maileroo.com/api/v2/emails",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send a transactional email with HTML and/or plain text content. Supports attachments, tracking, custom tags and headers, and scheduled delivery via RFC 3339 timestamps or natural language."
+        },
+        {
+          "info": {
+            "name": "Send a templated email",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://smtp.maileroo.com/api/v2/emails/template",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send an email using a template defined in the Maileroo dashboard. Template variables are merged via the template_data object."
+        },
+        {
+          "info": {
+            "name": "Send bulk emails",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://smtp.maileroo.com/api/v2/emails/bulk",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Send up to 500 emails in a single request, each with its own recipient and merge variables. Common subject and body content applies across messages, with per-message overrides."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
