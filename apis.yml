@@ -80,6 +80,8 @@ apis:
   - type: SDKs
     url: https://maileroo.com/docs/email-api/libraries-and-sdks/
 common:
+  - type: Website
+    url: https://www.maileroo.com/
   - type: AgenticAccess
     url: agentic-access/maileroo-agentic-access.yml
   - type: DomainSecurity
