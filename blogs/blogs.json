@@ -3,14 +3,13 @@
   "feeds": [
     {
       "source": "https://maileroo.com/llms.txt",
-      "error": "HTTPError"
-    },
-    {
-      "source": "https://maileroo.com/blog/feed",
-      "error": "HTTPError"
+      "feed_url": "https://maileroo.com/llms.txt",
+      "title": "",
+      "saved": 0,
+      "method": "none"
     }
   ],
-  "fetched": "2026-09-06T19:17:18Z",
+  "fetched": "2026-09-13T13:00:00Z",
   "post_count": 33,
   "feed_nature": "vendor-blog",
   "feed_nature_basis": "path_blog",
