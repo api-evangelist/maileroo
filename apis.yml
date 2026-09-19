@@ -49,6 +49,8 @@ apis:
   humanURL: https://maileroo.com/email-for-developers
   baseURL: https://smtp.maileroo.com
   tags:
+  - Email
+  tags_raw:
   - Emails
   properties:
   - type: OpenAPI
