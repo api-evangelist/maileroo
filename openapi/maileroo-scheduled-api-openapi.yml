@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: Maileroo Email Emails Scheduled API
+  title: Maileroo Email Scheduled API
   description: The Maileroo REST API allows sending transactional and marketing emails via JSON requests with high deliverability. Supports HTML and plain text emails, attachments, tracking, templates, scheduled delivery, and bulk sending. All requests are authenticated via an API sending key passed in the X-Api-Key header or as a Bearer token in the Authorization header.
   version: '2.0'
   contact:
@@ -76,6 +76,26 @@ paths:
           description: Scheduled email not found
 components:
   schemas:
+    ScheduledEmailRecord:
+      type: object
+      properties:
+        reference_id:
+          type: string
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        subject:
+          type: string
+        scheduled_at:
+          type: string
+          format: date-time
+        tags:
+          type: object
+        headers:
+          type: object
     SimpleResponse:
       type: object
       properties:
@@ -85,6 +105,16 @@ components:
           type: string
         data:
           nullable: true
+    EmailObject:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          type: string
+          format: email
+        display_name:
+          type: string
     ScheduledEmailList:
       type: object
       properties:
@@ -107,36 +137,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ScheduledEmailRecord'
-    ScheduledEmailRecord:
-      type: object
-      properties:
-        reference_id:
-          type: string
-        from:
-          $ref: '#/components/schemas/EmailObject'
-        to:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailObject'
-        subject:
-          type: string
-        scheduled_at:
-          type: string
-          format: date-time
-        tags:
-          type: object
-        headers:
-          type: object
-    EmailObject:
-      type: object
-      required:
-      - address
-      properties:
-        address:
-          type: string
-          format: email
-        display_name:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

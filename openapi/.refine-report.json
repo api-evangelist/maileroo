@@ -1,8 +1,7 @@
 {
   "provider": "maileroo",
   "sources": [
-    "maileroo-emails-api-openapi.yml",
-    "maileroo-scheduled-api-openapi.yml"
+    "_original/maileroo-email-api-openapi.yml"
   ],
   "outputs": [
     "maileroo-emails-api-openapi.yml",
@@ -11,6 +10,13 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "maileroo-email-api-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "maileroo-emails-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "maileroo-scheduled-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
