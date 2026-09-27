@@ -76,35 +76,6 @@ paths:
           description: Scheduled email not found
 components:
   schemas:
-    ScheduledEmailRecord:
-      type: object
-      properties:
-        reference_id:
-          type: string
-        from:
-          $ref: '#/components/schemas/EmailObject'
-        to:
-          type: array
-          items:
-            $ref: '#/components/schemas/EmailObject'
-        subject:
-          type: string
-        scheduled_at:
-          type: string
-          format: date-time
-        tags:
-          type: object
-        headers:
-          type: object
-    SimpleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
-          nullable: true
     EmailObject:
       type: object
       required:
@@ -137,6 +108,35 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ScheduledEmailRecord'
+    SimpleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true
+    ScheduledEmailRecord:
+      type: object
+      properties:
+        reference_id:
+          type: string
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          type: array
+          items:
+            $ref: '#/components/schemas/EmailObject'
+        subject:
+          type: string
+        scheduled_at:
+          type: string
+          format: date-time
+        tags:
+          type: object
+        headers:
+          type: object
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
