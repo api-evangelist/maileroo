@@ -76,6 +76,15 @@ paths:
           description: Scheduled email not found
 components:
   schemas:
+    SimpleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true
     EmailObject:
       type: object
       required:
@@ -108,15 +117,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ScheduledEmailRecord'
-    SimpleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
-          nullable: true
     ScheduledEmailRecord:
       type: object
       properties:

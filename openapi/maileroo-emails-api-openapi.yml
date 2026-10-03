@@ -99,7 +99,17 @@ paths:
           description: Authentication failed
 components:
   schemas:
-    BulkSendResponse:
+    EmailObject:
+      type: object
+      required:
+      - address
+      properties:
+        address:
+          type: string
+          format: email
+        display_name:
+          type: string
+    ErrorResponse:
       type: object
       properties:
         success:
@@ -107,12 +117,7 @@ components:
         message:
           type: string
         data:
-          type: object
-          properties:
-            reference_ids:
-              type: array
-              items:
-                type: string
+          nullable: true
     BasicEmailRequest:
       type: object
       required:
@@ -167,70 +172,6 @@ components:
         reference_id:
           type: string
           description: 24-character hex ID; auto-generated if omitted
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
-          nullable: true
-    TemplatedEmailRequest:
-      allOf:
-      - $ref: '#/components/schemas/BasicEmailRequest'
-      - type: object
-        required:
-        - template_id
-        properties:
-          template_id:
-            type: integer
-          template_data:
-            type: object
-            additionalProperties: true
-    Attachment:
-      type: object
-      required:
-      - file_name
-      - content
-      properties:
-        file_name:
-          type: string
-        content:
-          type: string
-          description: Base64-encoded file content
-        content_type:
-          type: string
-        inline:
-          type: boolean
-        content_id:
-          type: string
-    SendResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
-          type: object
-          properties:
-            reference_id:
-              type: string
-    BulkMessage:
-      type: object
-      required:
-      - from
-      - to
-      properties:
-        from:
-          $ref: '#/components/schemas/EmailObject'
-        to:
-          $ref: '#/components/schemas/EmailObject'
-        template_data:
-          type: object
-        reference_id:
-          type: string
     BulkEmailRequest:
       type: object
       required:
@@ -261,15 +202,74 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/Attachment'
-    EmailObject:
+    TemplatedEmailRequest:
+      allOf:
+      - $ref: '#/components/schemas/BasicEmailRequest'
+      - type: object
+        required:
+        - template_id
+        properties:
+          template_id:
+            type: integer
+          template_data:
+            type: object
+            additionalProperties: true
+    SendResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            reference_id:
+              type: string
+    BulkSendResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            reference_ids:
+              type: array
+              items:
+                type: string
+    BulkMessage:
       type: object
       required:
-      - address
+      - from
+      - to
       properties:
-        address:
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          $ref: '#/components/schemas/EmailObject'
+        template_data:
+          type: object
+        reference_id:
           type: string
-          format: email
-        display_name:
+    Attachment:
+      type: object
+      required:
+      - file_name
+      - content
+      properties:
+        file_name:
+          type: string
+        content:
+          type: string
+          description: Base64-encoded file content
+        content_type:
+          type: string
+        inline:
+          type: boolean
+        content_id:
           type: string
   securitySchemes:
     ApiKeyAuth:
