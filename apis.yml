@@ -82,6 +82,12 @@ apis:
   - type: SDKs
     url: https://maileroo.com/docs/email-api/libraries-and-sdks/
 common:
+  - type: Plans
+    url: plans/maileroo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/maileroo-rate-limits.yml
+  - type: FinOps
+    url: finops/maileroo-finops.yml
   - type: Website
     url: https://www.maileroo.com/
   - type: AgenticAccess
