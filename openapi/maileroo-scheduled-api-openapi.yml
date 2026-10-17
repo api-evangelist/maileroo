@@ -96,15 +96,6 @@ components:
           type: object
         headers:
           type: object
-    SimpleResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
-          nullable: true
     ScheduledEmailList:
       type: object
       properties:
@@ -127,6 +118,15 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/ScheduledEmailRecord'
+    SimpleResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true
     EmailObject:
       type: object
       required:

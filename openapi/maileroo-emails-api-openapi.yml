@@ -99,6 +99,86 @@ paths:
           description: Authentication failed
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          nullable: true
+    TemplatedEmailRequest:
+      allOf:
+      - $ref: '#/components/schemas/BasicEmailRequest'
+      - type: object
+        required:
+        - template_id
+        properties:
+          template_id:
+            type: integer
+          template_data:
+            type: object
+            additionalProperties: true
+    SendResponse:
+      type: object
+      properties:
+        success:
+          type: boolean
+        message:
+          type: string
+        data:
+          type: object
+          properties:
+            reference_id:
+              type: string
+    Attachment:
+      type: object
+      required:
+      - file_name
+      - content
+      properties:
+        file_name:
+          type: string
+        content:
+          type: string
+          description: Base64-encoded file content
+        content_type:
+          type: string
+        inline:
+          type: boolean
+        content_id:
+          type: string
+    BulkEmailRequest:
+      type: object
+      required:
+      - subject
+      - messages
+      properties:
+        subject:
+          type: string
+          maxLength: 255
+        messages:
+          type: array
+          maxItems: 500
+          items:
+            $ref: '#/components/schemas/BulkMessage'
+        template_id:
+          type: integer
+        html:
+          type: string
+        plain:
+          type: string
+        tracking:
+          type: boolean
+        tags:
+          type: object
+        headers:
+          type: object
+        attachments:
+          type: array
+          items:
+            $ref: '#/components/schemas/Attachment'
     EmailObject:
       type: object
       required:
@@ -109,20 +189,20 @@ components:
           format: email
         display_name:
           type: string
-    BulkSendResponse:
+    BulkMessage:
       type: object
+      required:
+      - from
+      - to
       properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
+        from:
+          $ref: '#/components/schemas/EmailObject'
+        to:
+          $ref: '#/components/schemas/EmailObject'
+        template_data:
           type: object
-          properties:
-            reference_ids:
-              type: array
-              items:
-                type: string
+        reference_id:
+          type: string
     BasicEmailRequest:
       type: object
       required:
@@ -177,50 +257,7 @@ components:
         reference_id:
           type: string
           description: 24-character hex ID; auto-generated if omitted
-    BulkMessage:
-      type: object
-      required:
-      - from
-      - to
-      properties:
-        from:
-          $ref: '#/components/schemas/EmailObject'
-        to:
-          $ref: '#/components/schemas/EmailObject'
-        template_data:
-          type: object
-        reference_id:
-          type: string
-    TemplatedEmailRequest:
-      allOf:
-      - $ref: '#/components/schemas/BasicEmailRequest'
-      - type: object
-        required:
-        - template_id
-        properties:
-          template_id:
-            type: integer
-          template_data:
-            type: object
-            additionalProperties: true
-    Attachment:
-      type: object
-      required:
-      - file_name
-      - content
-      properties:
-        file_name:
-          type: string
-        content:
-          type: string
-          description: Base64-encoded file content
-        content_type:
-          type: string
-        inline:
-          type: boolean
-        content_id:
-          type: string
-    SendResponse:
+    BulkSendResponse:
       type: object
       properties:
         success:
@@ -230,47 +267,10 @@ components:
         data:
           type: object
           properties:
-            reference_id:
-              type: string
-    BulkEmailRequest:
-      type: object
-      required:
-      - subject
-      - messages
-      properties:
-        subject:
-          type: string
-          maxLength: 255
-        messages:
-          type: array
-          maxItems: 500
-          items:
-            $ref: '#/components/schemas/BulkMessage'
-        template_id:
-          type: integer
-        html:
-          type: string
-        plain:
-          type: string
-        tracking:
-          type: boolean
-        tags:
-          type: object
-        headers:
-          type: object
-        attachments:
-          type: array
-          items:
-            $ref: '#/components/schemas/Attachment'
-    ErrorResponse:
-      type: object
-      properties:
-        success:
-          type: boolean
-        message:
-          type: string
-        data:
-          nullable: true
+            reference_ids:
+              type: array
+              items:
+                type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
