@@ -1,4 +1,4 @@
-# Maileroo (maileroo)
+# Maileroo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,62 +66,119 @@
 
 Maileroo provides transactional and marketing email delivery via a developer-friendly REST API with high deliverability, SMTP relay support, email tracking, and SDKs for popular programming languages. Trusted by businesses of all sizes to handle millions of emails every month.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/maileroo/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/maileroo/refs/heads/main/apis.yml)
+**Areas:** Email · Email Delivery · Marketing Email · SMTP · Transactional Email
 
-## Scope
+## Maileroo on APIs.io
 
-- **Type:** Index
+Everything profiled for Maileroo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/maileroo/](https://apis.io/providers/maileroo/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (2)
 
-- Email
-- Email Delivery
-- Marketing Email
-- SMTP
-- Transactional Email
+- [Maileroo Emails API](https://apis.io/apis/maileroo/maileroo-emails-api/) — Send transactional and bulk emails
+- [Maileroo Scheduled API](https://apis.io/apis/maileroo/maileroo-scheduled-api/) — Manage scheduled email deliveries
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-02-06
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### Maileroo Email API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The Maileroo REST API allows sending transactional and marketing emails via JSON requests with high deliverability. Supports HTML and plain text emails, attachments, tracking, and templates.
+- [Maileroo Agentic Access](https://apis.io/agentic-access/maileroo/maileroo-agentic-access/)
 
-- **Human URL:** [https://maileroo.com/email-for-developers](https://maileroo.com/email-for-developers)
-- **Base URL:** `https://smtp.maileroo.com`
+#### Collections (3)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Email
-- REST API
-- Transactional Email
+- [Maileroo Email API](https://apis.io/collections/maileroo/open-maileroo-email-api/)
+- [Maileroo Email Emails API](https://apis.io/collections/maileroo/open-maileroo-emails-api/)
+- [Maileroo Email Emails Scheduled API](https://apis.io/collections/maileroo/open-maileroo-scheduled-api/)
 
-#### Properties
+#### Security (2)
 
-- [Documentation](https://maileroo.com/docs/email-api/introduction/)
-- [Getting Started](https://maileroo.com/docs/introduction/)
-- [Reference](https://maileroo.com/docs/email-api/send-basic-email/)
-- [S D Ks](https://maileroo.com/docs/email-api/libraries-and-sdks/)
-- [OpenAPI](openapi/maileroo-email-api-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/maileroo-email-api.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/maileroo-email-api.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Authentication, trust centre, and vulnerability disclosure.
 
-## Common Properties
+- [Maileroo Authentication](https://apis.io/security/maileroo/maileroo-authentication/)
+- [Maileroo Domain Security](https://apis.io/security/maileroo/maileroo-domain-security/)
 
-- [LinkedIn](https://www.linkedin.com/company/maileroo)
-- [Portal](https://maileroo.com/email-for-developers)
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Maileroo Plans Pricing](https://apis.io/plans/maileroo/maileroo-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Maileroo Rate Limits](https://apis.io/rate-limits/maileroo/maileroo-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Maileroo Finops](https://apis.io/finops/maileroo/maileroo-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.maileroo.com/)
 - [Documentation](https://maileroo.com/docs/)
-- [Sign Up](https://app.maileroo.com/register)
-- [Login](https://app.maileroo.com/login)
-- [GitHub Organization](https://github.com/maileroo)
 - [Pricing](https://maileroo.com/pricing)
-- [L L Ms Txt](https://maileroo.com/llms.txt)
+- [Blog](https://maileroo.com/blog/feed)
+- [GitHub](https://github.com/maileroo)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.1** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 73.2 |
+| Contract quality | 52.3 |
+| Contract governance | 0.0 |
+| Operational transparency | 10.5 |
+| Developer ergonomics | 47.6 |
+| Access clarity | 25.0 |
+
+**Agent readiness 23.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | verified |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 11.8** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/maileroo/](https://apis.io/providers/maileroo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Maileroo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/maileroo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
